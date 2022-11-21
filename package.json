@@ -1,0 +1,15 @@
+{
+  "name": "codesocial",
+  "version": "1.0.0",
+  "description": "First Social Media App",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pritam Dhara",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
