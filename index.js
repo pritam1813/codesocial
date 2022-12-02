@@ -7,7 +7,7 @@ app.use('/', require('./routes'));
 
 //setting view engine
 app.set('view engine', 'ejs');
-
+//app.set('view engine', 'pug');
 
 app.listen(port, function(err){
     if(err){

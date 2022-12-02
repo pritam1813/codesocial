@@ -7,4 +7,7 @@ const homeController = require('../controllers/home_controller')
 router.get('/',homeController.home);
 router.get('/profile', homeController.profile);
 
+//For users, setting '/users' route and mapping routes/user.js
+router.use('/user', require('./user'));
+
 module.exports = router;
