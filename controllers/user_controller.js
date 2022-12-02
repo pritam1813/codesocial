@@ -26,7 +26,7 @@ module.exports.login = function(req, res){
 
 //Getting Sign Up data
 module.exports.create = function(req,res){
-
+    
 };
 
 //Validating Sign In data
