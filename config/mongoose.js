@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //using connect function to specify database
-mongoose.connect('mongodb://127.0.0.1:27017/codesocial_db');
+mongoose.connect('mongodb://localhost/codesocial_db');
 
 //db constant is used to check the connection
 const db = mongoose.connection;

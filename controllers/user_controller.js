@@ -1,6 +1,8 @@
+const User = require('../models/user');
+
 module.exports.profile = function(req, res){
     return res.render('Users', {
-        title : 'User123'
+        title : 'User Profile'
     });
 };
 
@@ -24,12 +26,34 @@ module.exports.login = function(req, res){
     });
 };
 
-//Getting Sign Up data
-module.exports.create = function(req,res){
-    
-};
+
+// get the sign up data
+module.exports.create = function(req, res){
+
+    //First matching password and confirm password field
+    //If it doesn't match then throw error 
+    if (req.body.password != req.body.confirm_password){
+        return res.redirect('back');
+    }
+
+    //Finding if user exists in the Database. 'User' is imported from models/user (i.e. the userSchema)
+    User.findOne({email: req.body.email}, function(err, user){
+        if(err){console.log('error in finding user in signing up'); return}
+
+        if (!user){
+            User.create(req.body, function(err, user){
+                if(err){console.log('error in creating user while signing up'); return}
+
+                return res.redirect('/user/login');
+            })
+        }else{
+            return res.redirect('back');
+        }
+
+    });
+}
 
 //Validating Sign In data
 module.exports.create_session = function(req,res){
 
-};
+}
