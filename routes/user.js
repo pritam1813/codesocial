@@ -23,4 +23,7 @@ router.get('/login', userController.login);
 //Route for Signing Up
 router.post('/create', userController.create);
 
+//Route for Signin In
+router.post('/create_session', userController.create_session);
+
 module.exports = router;
