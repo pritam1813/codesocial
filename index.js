@@ -5,15 +5,18 @@ const db = require('./config/mongoose');
 const app = express();
 const port = 8000;
 
-//use express router
-app.use('/', require('./routes'));
 
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+//use express router
+app.use('/', require('./routes'));
+
+
 //setting view engine
 app.set('view engine', 'ejs');
+app.set('views', './views');
 //app.set('view engine', 'pug');
 
 app.listen(port, function(err){
