@@ -1,0 +1,15 @@
+<head>
+    <title><%= title %> | Profile</title>
+</head>
+
+<h1>
+    Hello <%= title %>
+</h1>
+
+<div>
+    <p>Email : <%= thisuser %></p>
+    <form action="/user/logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
+    <!-- <button type="submit" formaction="/user/logout" formmethod="POST">Logout</button> -->
+</div>

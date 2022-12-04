@@ -1,9 +1,25 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req, res){
-    return res.render('Users', {
-        title : 'User Profile'
-    });
+    //checking if user's cookie is present
+    if(req.cookies.user_id){
+        //if cookie is present then display user details
+        User.findById(req.cookies.user_id, function(err, user){
+            if(err){console.log('Error finding user'); return}
+
+            if(user){
+                return res.render('profile', {
+                    title : user.name,
+                    thisuser : user.email
+                });
+            }
+            //if user not found
+            return res.redirect('/user/login');
+        });
+    }else{
+        //if cookie not present then redirect to login page
+        return res.redirect('/user/login');
+    }
 };
 
 module.exports.edit = function(req, res){
@@ -82,4 +98,12 @@ module.exports.create_session = function(req,res){
         
     });
     
+}
+
+module.exports.logout = function(req, res){
+    if(req.cookies.user_id){
+        res.clearCookie(req.cookies.user_id, {domain: 'localhost', path :'/', expires: new Date(1)});
+        return res.end();
+    }
+    return res.redirect('/user/login')
 }
