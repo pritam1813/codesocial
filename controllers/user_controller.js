@@ -55,5 +55,5 @@ module.exports.create = function(req, res){
 
 //Validating Sign In data
 module.exports.create_session = function(req,res){
-
+    return res.redirect('/');
 }
