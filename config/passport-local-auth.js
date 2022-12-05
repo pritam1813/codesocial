@@ -43,6 +43,33 @@ passport.deserializeUser(function(id, done){
     });
 });
 
+//creating funtion for checking Authentication to use as middleware 
+passport.checkAuthentication = function(req, res, next){
+    //if user is logged in
+    if (req.isAuthenticated()){
+        return next();
+    }
 
+    //if user is not logged in
+    return res.redirect('/user/login');
+};
+
+passport.setAuthenticatedUser = function(req, res, next){
+    if(req.isAuthenticated()){
+        //req.user contains the current signed in user from the session cookie, sending this to locals for the views
+        res.locals.user = req.user;
+    }
+    next();
+};
+
+passport.routeValidation = function(req, res, next){
+    //if user is logged in
+    if (req.isAuthenticated()){
+        return res.redirect('/user/profile');
+    }
+
+    //if user is not logged in
+    return next();
+};
 
 module.exports = passport;

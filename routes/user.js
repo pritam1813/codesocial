@@ -10,16 +10,16 @@ const userController = require('../controllers/user_controller');
 router.get('/', userController.default);
 
 //Setting /profile route
-router.get('/profile', userController.profile);
+router.get('/profile', passport.checkAuthentication , userController.profile);
 
 //Setting /profile/edit route
 router.get('/profile/edit', userController.edit);
 
 //Setting Signup for user
-router.get('/signup', userController.signup);
+router.get('/signup', passport.routeValidation, userController.signup);
 
 //Setting Login for user
-router.get('/login', userController.login);
+router.get('/login', passport.routeValidation, userController.login);
 
 //Route for Signing Up
 router.post('/create', userController.create);

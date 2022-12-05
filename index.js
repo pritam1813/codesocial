@@ -9,6 +9,7 @@ const port = 8000;
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-auth');
+const MongoStore = require('connect-mongo');
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,11 +32,22 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
-    }
+    },
+    //using MongoStore to store the session-cookie into the db
+    store: new MongoStore(
+        {
+            mongoUrl: process.env.MONGO_URI,
+            autoRemove: 'disabled'
+        },
+        function(err){
+        if(err){console.log(err || 'db connected Successfully')}
+    })
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 //use express router
 app.use('/', require('./routes'));
