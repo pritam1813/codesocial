@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose');
-
+const dotenv = require('dotenv');
 const app = express();
 const port = 8000;
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-
+dotenv.config();
 
 
 //setting view engine

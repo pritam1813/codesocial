@@ -1,8 +1,13 @@
+const dotenv = require('dotenv');
+dotenv.config();
 //require Library mongoose for connecting to a mongodb database
 const mongoose = require('mongoose');
 
 //using connect function to specify database
-mongoose.connect('mongodb+srv://Cornfield6612:B8Zcpk1NOtk50Boz@mymongocluster.lqv0ayh.mongodb.net/codesocial_db');
+//For connecting using mongo hosted on local, use
+//mongoose.connect('mongodb://localhost/codesocial_db');
+
+mongoose.connect(process.env.MONGO_URI);
 
 //db constant is used to check the connection
 const db = mongoose.connection;

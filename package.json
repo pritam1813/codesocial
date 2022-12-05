@@ -11,16 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mongoose": "^6.7.5",
-<<<<<<< HEAD
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-=======
     "nodemon": "^2.0.20",
->>>>>>> origin
-    "pug": "^3.0.2"
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }
